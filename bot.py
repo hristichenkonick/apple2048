@@ -11,6 +11,17 @@ WELCOME_TEXT = (
     "👇 Запускайте игру как можно скорее!"
 )
 
+HELP_TEXT = (
+    "❓ <b>Как играть?</b>\n\n"
+    "Это игра в стиле 2048: соединяй одинаковые плитки и открывай новые уровни. "
+    "Только вместо цифр здесь — iPhone! Начни с iPhone 2G и дойди до iPhone 17 Pro. "
+    "Объединяй плитки и прокачивай свою коллекцию iPhone!\n\n"
+    "📱 <b>На телефоне:</b>\n"
+    "Используй свайпы, чтобы передвигать плитки.\n\n"
+    "💻 <b>На компьютере:</b>\n"
+    "Используй стрелки на клавиатуре, чтобы передвигать плитки."
+)
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [[
         InlineKeyboardButton(
@@ -24,8 +35,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=InlineKeyboardMarkup(keyboard)
     )
 
+async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        text=HELP_TEXT,
+        parse_mode="HTML"
+    )
+
 if __name__ == "__main__":
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("help", help_command))
     print("Бот запущен!")
     app.run_polling()
