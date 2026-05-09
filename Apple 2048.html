@@ -482,6 +482,11 @@ newGame();
  <div style="font-size:0.7rem;color:#8e8e93;letter-spacing:3px;text-transform:uppercase;margin-bottom:40px;">1976</div>
  <div style="width:100%;padding:12px 0 20px;border-top:1px solid rgba(255,255,255,0.07);font-size:0.58rem;color:#555;text-align:left;">© Nick Khristichenko</div>
 </div>
-<script>window.Telegram.WebApp.expand();</script>
+<script>
+  window.Telegram.WebApp.ready();
+  window.Telegram.WebApp.expand();
+  window.Telegram.WebApp.requestFullscreen();
+</script>
+
 </body>
 </html>
