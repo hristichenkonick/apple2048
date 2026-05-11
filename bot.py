@@ -23,10 +23,11 @@ HELP_TEXT = (
 )
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    bot_username = (await context.bot.get_me()).username
     keyboard = [[
         InlineKeyboardButton(
             text="🎮 Запустить игру",
-            web_app=WebAppInfo(url=WEBAPP_URL)
+            url=f"https://t.me/{bot_username}?startapp=game"
         )
     ]]
     await update.message.reply_text(
